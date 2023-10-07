@@ -53,63 +53,65 @@ SPBox=(2,4,3,1)
 加密、解密、暴力破解都需要输入对应的明文/密文/密钥才能运行，若提交为空，则会弹出相应错误提示。  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2d73571c-f252-445a-b6ee-532f05536af2)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b4353624-767f-4057-a619-10d9c43b8fbe)
-![Uploading image.png…]()
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/d7bd7937-a834-471b-bd65-74cb2d0d1b5b)
 
 密钥限定为10bits，不满足条件，则会弹出警告  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2582c3bf-ffec-4113-8ad8-f290684c1796)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/0500a4f1-eb14-43d5-a576-76ab45e60a89)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2aca304c-0f1f-4cbe-861f-cecef5981e8e)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/0514c0d1-1af2-4766-b2c3-4a0829d5068a)
 
 明密文必须是8bits的二进制数或者能转化为ASCII的字符串，否则会弹出警告  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/8e33ea94-b25a-40f9-a64b-7dce065c0371)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9b8f0fef-10bb-4983-8dd3-722b471e57d3)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/86e78b95-3228-4e09-821e-b1928aec570c)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/29672e67-72d1-4455-bab3-d398d79a64ab)
+
 #### 1.2.2加解密功能运行
 【加密】测试用例1：  
 明文：10101010 密钥：1111000010  加密后的密文：00101111  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/3ef82c1b-4df1-45b0-9b4a-b2c9bc5d7e1f)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/a5736fef-7b48-4437-a58a-e68327a1b8fb)
 
 【加密】测试用例2：  
 明文：+ 密钥：1111111111  加密后的密文：2  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/484fc449-a4f2-4486-98fd-abdfcd7b067a)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/da5df5f7-fa13-453f-8dd5-cfeb607ce963)
 
 【加密】测试用例3：  
 明文：god 密钥：1010101011  加密后的密文：îdÆ  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/c664f045-35cd-4d53-9be9-8b25bc1d70c1)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7cca3e63-8161-4cbd-aca9-99b0627bdd87)
 
 【解密】测试用例1：  
 密文：00101111 密钥：1111000010  解密后的明文：10101010  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/1190c7e7-2b40-4306-b78d-5d05d4c9c626)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/263f12b4-853b-4426-8996-e20301d122fc)
 
 【解密】测试用例2：  
 密文：2 密钥：1111111111  解密后的明文：+  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9c4c0c7f-6697-491a-8a5c-85c92960bcf9)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/eb301613-d843-4010-8c99-31c48edd7cad)
 
 【解密】测试用例3：  
 密文：îdÆ 密钥：1010101011  解密后的明文：god  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/c2a7c79b-558f-43e9-8968-64a5e3c031e2)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/212577a2-55a4-4dd1-8d26-234acf81a3a5)
 
 **通过加解密的三个测试用例，我们清楚可以得出，明密文无论是8bits二进制数据，还是单个ascii码、或者ASCII码串，其加解密结果均匹配且互逆，实现对称加密的基本原理，实现了S-DES算法的基本功能。**
 
 ## 第2关：交叉测试
 我们组与其他组的8bits二进制与ASCII码对应的加解密用例对比：  
 二进制加密：（明文：10101010 密钥：1111100000）  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/fa816509-7487-4621-ad56-e8d5bfc37323)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2c8c2649-b8a2-42d2-b70e-5b481e3f546d)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/8915c66d-ce95-49f0-ab1d-11a6ed5041e2)  
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/61a2cb15-1bed-44e6-9a56-4e113bb20009)
+
 别组：  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9e86fc42-472b-43ac-824c-8b95621f2e70)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/5561311e-f93b-4ea5-93d0-9b207f8c6c86)
 
 ASCII加密：（密文：svc 密钥：1111111111）  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/3b57fa18-e823-4107-85e7-d89678482e76)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/8c425ebc-0609-4fde-877e-3399c084c654)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9cfd27d8-81a8-48e9-a1f1-fa889eb3a429)  
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2e8c551a-7d0e-4210-9ae6-21fac05f8bed)
+
 别组：  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/4030d603-1f2e-4b0c-8dd3-90a6589fb865)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7be9e653-b692-4ef2-bcd1-1b0be6c1dc73)
 
 **由上图可得，运用相同的密钥扩展置、IP初始置换盒、最终置换盒、轮函数F，加密而来的结果相同。使用相同算法流程和转换单元(P-Box、S-Box等)，以保证算法和程序在异构的系统或平台上都可以正常运行，即通过了交叉测试。**
 
 
 ## 第3关：扩展功能  
 由第一关的测试用例2与测试用例3以及下图用例均可证实该系统已向实用性扩展，加密算法的数据输入扩展为可以是ASCII编码字符串(分组为1 Byte)，对应地输出也可以是ASCII字符串  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bacaa86-2532-4c36-b5f5-cba4ce1db36a)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/54ea8059-c8c9-4b96-9f30-02a6f20a4f5c)
+
 
 其中运用的中心思想是将明文密文中的ASCII编码字符串划分为单个的ASCII编码字符，再将其转化为对应的8bits的二进制，再作为输入进行加解密，经过加解密之后，再将得到的8bits二进制转化为对应的ASCII字符串，即完成了对应的ASCII加解密的扩展。  
 下面展示了关于扩展的部分核心代码：  
@@ -190,7 +192,6 @@ void EncryptWidget::encrypt()
 **相对应的破解时间为0.015572秒**  
 通过下图的加密与解密均可证明根据明密文对找到的密钥正确：    
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/919be8e3-d071-4a06-9741-9eed97575b55)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/fbbb7050-30e3-4e47-93e8-d8a56820b0dd)
 
 #### 4.1.3单线程破解部分核心代码  
 `<void CrackWidget::crack()
