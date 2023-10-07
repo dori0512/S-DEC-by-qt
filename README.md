@@ -78,15 +78,15 @@ SPBox=(2,4,3,1)
 
 【解密】测试用例1：  
 密文：00101111 密钥：1111000010  解密后的明文：10101010  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/263f12b4-853b-4426-8996-e20301d122fc)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/c3a22cb6-9306-4867-8ddd-12f79066f2ae)
 
 【解密】测试用例2：  
 密文：2 密钥：1111111111  解密后的明文：+  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/eb301613-d843-4010-8c99-31c48edd7cad)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/a67552dd-310e-4f65-9bbf-3c153d699d49)
 
 【解密】测试用例3：  
 密文：îdÆ 密钥：1010101011  解密后的明文：god  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/212577a2-55a4-4dd1-8d26-234acf81a3a5)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/d2d428bc-02d1-4280-a116-e624eaec9a37)
 
 **通过加解密的三个测试用例，我们清楚可以得出，明密文无论是8bits二进制数据，还是单个ascii码、或者ASCII码串，其加解密结果均匹配且互逆，实现对称加密的基本原理，实现了S-DES算法的基本功能。**
 
