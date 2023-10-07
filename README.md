@@ -57,20 +57,20 @@ SPBox=(2,4,3,1)
 
 密钥限定为10bits，不满足条件，则会弹出警告  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/f64c9884-dabf-4a01-bfda-675262ad3637)
-
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/8826184f-8e3a-4938-8de4-2743207b6393)
 
 明密文必须是8bits的二进制数或者能转化为ASCII的字符串，否则会弹出警告  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/86e78b95-3228-4e09-821e-b1928aec570c)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/29672e67-72d1-4455-bab3-d398d79a64ab)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b39790d1-5c9e-45fb-813c-4c7fc47a710c)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/c885dc68-086f-455f-a4c6-2fc7ef8b83cf)
 
 #### 1.2.2加解密功能运行
 【加密】测试用例1：  
 明文：10101010 密钥：1111000010  加密后的密文：00101111  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/a5736fef-7b48-4437-a58a-e68327a1b8fb)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/d000102c-20ed-489e-8224-676dce9ed75c)
 
 【加密】测试用例2：  
 明文：+ 密钥：1111111111  加密后的密文：2  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/da5df5f7-fa13-453f-8dd5-cfeb607ce963)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/c8f814bf-4b87-46d0-99ec-95571e9ba8d7)
 
 【加密】测试用例3：  
 明文：god 密钥：1010101011  加密后的密文：îdÆ  
