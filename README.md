@@ -93,18 +93,20 @@ SPBox=(2,4,3,1)
 ## 第2关：交叉测试
 我们组与其他组的8bits二进制与ASCII码对应的加解密用例对比：  
 二进制加密：（明文：10101010 密钥：1111100000）  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/8915c66d-ce95-49f0-ab1d-11a6ed5041e2)  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/61a2cb15-1bed-44e6-9a56-4e113bb20009)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/efd2c0a0-1a2f-4d8a-83f4-d4edbabb99b5)
+
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/beacd196-26db-42e7-af64-1a4f0a3f2699)
 
 别组：  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/5561311e-f93b-4ea5-93d0-9b207f8c6c86)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/690317c1-26d0-40fb-b445-71537e4a23e1)
 
 ASCII加密：（密文：svc 密钥：1111111111）  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9cfd27d8-81a8-48e9-a1f1-fa889eb3a429)  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2e8c551a-7d0e-4210-9ae6-21fac05f8bed)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/5b4d77ac-6b18-4b5e-8400-fd1c89c31043)
+
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/d79e7499-3ba7-4a71-b4f9-c496283f1a79)
 
 别组：  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7be9e653-b692-4ef2-bcd1-1b0be6c1dc73)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9c4d705b-50cf-4bc2-bb20-82a908f851b3)
 
 **由上图可得，运用相同的密钥扩展置、IP初始置换盒、最终置换盒、轮函数F，加密而来的结果相同。使用相同算法流程和转换单元(P-Box、S-Box等)，以保证算法和程序在异构的系统或平台上都可以正常运行，即通过了交叉测试。**
 
