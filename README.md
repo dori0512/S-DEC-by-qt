@@ -1,29 +1,29 @@
 # S-DEC-by-qt
 ## 实验原理和标准设定：
-### 1 分组长度：8-bit
-### 2 密钥长度：10-bit
-### 3 算法描述：
-#### 3.1 加密算法：  
+1 分组长度：8-bit
+2 密钥长度：10-bit
+3 算法描述：
+3.1 加密算法：  
 C=IP^{-1}(f_{k_{2}}(SW(f_{k_{1}}(IP(P)))))
-#### 3.2 解密算法：  
+3.2 解密算法：  
 P=IP^{-1}(f_{k_{1}}(SW(f_{k_{2}}(IP(C)))))
-#### 3.3 密钥扩展：  
+3.3 密钥扩展：  
 k_{i}=P_{8}(Shift^{i}(P_{10}(K))), (i=1,2)
-### 4 转换装置设定：
-#### 4.1 密钥扩展置
+4 转换装置设定：
+4.1 密钥扩展置
 P_{10}=(3,5,2,7,4,10,1,9,8,6)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bfc2bc3-f101-4bc3-bd06-2e947bf90944)  
 P_{8}=(6,3,7,4,8,5,10,9)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/ed5c2cae-f642-4b4c-bea6-116213cfd593)  
 Left_Shift^1=(2,3,4,5,1)  
 Left_Shift^2=(3,4,5,1,2)
-#### 4.2 初始置换盒
+4.2 初始置换盒
 IP=(2,6,3,1,4,8,5,7)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/914b8f2b-ece8-4c6b-9bfa-e21c0c20389a)
-#### 4.3 最终置换盒
+最终置换盒
 IP^{-1}=(4,1,3,5,7,2,8,6)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/492fc769-e1d6-4e1f-a175-8caff69473ec)
-#### 4.4 轮函数F
+轮函数F
 EPBox=(4,1,2,3,2,3,4,1)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b2a9ffae-2619-411b-882a-6e642a8f5e96)
 
