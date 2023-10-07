@@ -3,115 +3,165 @@
 ### 1 分组长度：8-bit
 ### 2 密钥长度：10-bit
 ### 3 算法描述：
-#### 3.1 加密算法：C=IP^{-1}(f_{k_{2}}(SW(f_{k_{1}}(IP(P)))))
-#### 3.2 解密算法：P=IP^{-1}(f_{k_{1}}(SW(f_{k_{2}}(IP(C)))))
-#### 3.3 密钥扩展：k_{i}=P_{8}(Shift^{i}(P_{10}(K))), (i=1,2)
+#### 3.1 加密算法：  
+C=IP^{-1}(f_{k_{2}}(SW(f_{k_{1}}(IP(P)))))
+#### 3.2 解密算法：  
+P=IP^{-1}(f_{k_{1}}(SW(f_{k_{2}}(IP(C)))))
+#### 3.3 密钥扩展：  
+k_{i}=P_{8}(Shift^{i}(P_{10}(K))), (i=1,2)
 ### 4 转换装置设定：
 #### 4.1 密钥扩展置
-P_{10}=(3,5,2,7,4,10,1,9,8,6)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/a8bc78f1-2996-4aef-9e34-a5b39a4d719e)
-P_{8}=(6,3,7,4,8,5,10,9)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/5411861c-44ba-49c9-8e94-8ddcffbf5eb1)
-Left_Shift^1=(2,3,4,5,1)
+P_{10}=(3,5,2,7,4,10,1,9,8,6)  
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bfc2bc3-f101-4bc3-bd06-2e947bf90944)
+P_{8}=(6,3,7,4,8,5,10,9)  
+![Uploading image.png…]()
+Left_Shift^1=(2,3,4,5,1)  
 Left_Shift^2=(3,4,5,1,2)
 #### 4.2 初始置换盒
-IP=(2,6,3,1,4,8,5,7)
+IP=(2,6,3,1,4,8,5,7)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/914b8f2b-ece8-4c6b-9bfa-e21c0c20389a)
 #### 4.3 最终置换盒
-IP^{-1}=(4,1,3,5,7,2,8,6)
+IP^{-1}=(4,1,3,5,7,2,8,6)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/492fc769-e1d6-4e1f-a175-8caff69473ec)
 #### 4.4 轮函数F
-EPBox=(4,1,2,3,2,3,4,1)
+EPBox=(4,1,2,3,2,3,4,1)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b2a9ffae-2619-411b-882a-6e642a8f5e96)
 
-SBox_{1}=[(1,0,3,2);(3,2,1,0);(0,2,1,3);(3,1,0,2)]
+SBox_{1}=[(1,0,3,2);(3,2,1,0);(0,2,1,3);(3,1,0,2)]  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/dea7d561-a363-48b2-b706-17846ba9dbf9)
 
-SBox_{2}=[(0,1,2,3);(2,3,1,0);(3,0,1,2);(2,1,0,3)]
+SBox_{2}=[(0,1,2,3);(2,3,1,0);(3,0,1,2);(2,1,0,3)]  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/31d731f5-d1a9-48d3-9d12-3e894ca9731c)
 
-SPBox=(2,4,3,1)
+SPBox=(2,4,3,1)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b4543011-8acf-4a82-b755-a04fe2ead27c)
 
-## 第1关：基本测试
+## 第1关：基本测试  
 根据S-DES算法编写和调试程序，提供GUI解密支持用户交互。输入可以是8bit的数据和10bit的密钥，输出是8bit的密文。
 ### 1.1GUI界面设计
-#### 1.1.1加密界面
+#### 1.1.1加密界面  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/1983256d-edf2-40f3-8a88-8ec041504f94)
-#### 1.1.2解密界面
+#### 1.1.2解密界面  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/0566655e-a342-4cb6-bdf7-fd7ed0363610)
-#### 1.1.3暴力破解界面
+#### 1.1.3暴力破解界面  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/25a66b2f-6e18-48d8-b267-d81351168d12)
-#### 1.1.4界面间跳转
+#### 1.1.4界面间跳转  
 三个界面可以通过点击界面下方的三个按钮进行跳转，点击“锁”可以跳转到加密界面，点击“开锁”按钮可以跳转到解密界面，点击“暴力破解”即可转为“暴力破解”界面。
 
 ### 1.2基本运行与功能实现
-#### 1.2.1不规范输入
-加密、解密、暴力破解都需要输入对应的明文/密文/密钥才能运行，若提交为空，则会弹出相应错误提示。
+#### 1.2.1不规范输入  
+加密、解密、暴力破解都需要输入对应的明文/密文/密钥才能运行，若提交为空，则会弹出相应错误提示。  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2d73571c-f252-445a-b6ee-532f05536af2)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b4353624-767f-4057-a619-10d9c43b8fbe)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/5b135685-b153-4b63-8ae1-1c7a53b20da4)
 
-密钥限定为10bits，不满足条件，则会弹出警告
+密钥限定为10bits，不满足条件，则会弹出警告  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2582c3bf-ffec-4113-8ad8-f290684c1796)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/0500a4f1-eb14-43d5-a576-76ab45e60a89)
 
-明密文必须是8bits的二进制数或者能转化为ASCII的字符串，否则会弹出警告
+明密文必须是8bits的二进制数或者能转化为ASCII的字符串，否则会弹出警告  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/8e33ea94-b25a-40f9-a64b-7dce065c0371)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9b8f0fef-10bb-4983-8dd3-722b471e57d3)
 #### 1.2.2加解密功能运行
-【加密】测试用例1：
-明文：10101010 密钥：1111000010  加密后的密文：00101111
+【加密】测试用例1：  
+明文：10101010 密钥：1111000010  加密后的密文：00101111  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/3ef82c1b-4df1-45b0-9b4a-b2c9bc5d7e1f)
 
-【加密】测试用例2：
-明文：+ 密钥：1111111111  加密后的密文：2
+【加密】测试用例2：  
+明文：+ 密钥：1111111111  加密后的密文：2  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/484fc449-a4f2-4486-98fd-abdfcd7b067a)
 
-【加密】测试用例3：
-明文：god 密钥：1010101011  加密后的密文：îdÆ
+【加密】测试用例3：  
+明文：god 密钥：1010101011  加密后的密文：îdÆ  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/c664f045-35cd-4d53-9be9-8b25bc1d70c1)
 
-【解密】测试用例1：
-密文：00101111 密钥：1111000010  解密后的明文：10101010
+【解密】测试用例1：  
+密文：00101111 密钥：1111000010  解密后的明文：10101010  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/1190c7e7-2b40-4306-b78d-5d05d4c9c626)
 
-【解密】测试用例2：
-密文：2 密钥：1111111111  解密后的明文：+
+【解密】测试用例2：  
+密文：2 密钥：1111111111  解密后的明文：+  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9c4c0c7f-6697-491a-8a5c-85c92960bcf9)
 
-【解密】测试用例3：
-密文：îdÆ 密钥：1010101011  解密后的明文：god
+【解密】测试用例3：  
+密文：îdÆ 密钥：1010101011  解密后的明文：god  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/c2a7c79b-558f-43e9-8968-64a5e3c031e2)
 
 **通过加解密的三个测试用例，我们清楚可以得出，明密文无论是8bits二进制数据，还是单个ascii码、或者ASCII码串，其加解密结果均匹配且互逆，实现对称加密的基本原理，实现了S-DES算法的基本功能。**
 
-
 ## 第2关：交叉测试
-我们组与其他组的8bits二进制与ASCII码对应的加解密用例对比：
-二进制加密：（明文：10101010 密钥：1111100000）
+我们组与其他组的8bits二进制与ASCII码对应的加解密用例对比：  
+二进制加密：（明文：10101010 密钥：1111100000）  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/fa816509-7487-4621-ad56-e8d5bfc37323)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2c8c2649-b8a2-42d2-b70e-5b481e3f546d)
-别组：
+别组：  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9e86fc42-472b-43ac-824c-8b95621f2e70)
 
-ASCII加密：（密文：svc 密钥：1111111111）
+ASCII加密：（密文：svc 密钥：1111111111）  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/3b57fa18-e823-4107-85e7-d89678482e76)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/8c425ebc-0609-4fde-877e-3399c084c654)
-别组：
+别组：  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/4030d603-1f2e-4b0c-8dd3-90a6589fb865)
 
 **由上图可得，运用相同的密钥扩展置、IP初始置换盒、最终置换盒、轮函数F，加密而来的结果相同。使用相同算法流程和转换单元(P-Box、S-Box等)，以保证算法和程序在异构的系统或平台上都可以正常运行，即通过了交叉测试。**
 
 
-## 第3关：扩展功能
-由第一关的测试用例2与测试用例3以及下图用例均可证实该系统已向实用性扩展，加密算法的数据输入扩展为可以是ASCII编码字符串(分组为1 Byte)，对应地输出也可以是ASCII字符串
+## 第3关：扩展功能  
+由第一关的测试用例2与测试用例3以及下图用例均可证实该系统已向实用性扩展，加密算法的数据输入扩展为可以是ASCII编码字符串(分组为1 Byte)，对应地输出也可以是ASCII字符串  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bacaa86-2532-4c36-b5f5-cba4ce1db36a)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/54ea8059-c8c9-4b96-9f30-02a6f20a4f5c)
 
-其中运用的中心思想是将明文密文中的ASCII编码字符串划分为单个的ASCII编码字符，再将其转化为对应的8bits的二进制，再作为输入进行加解密，经过加解密之后，再将得到的8bits二进制转化为对应的ASCII字符串，即完成了对应的ASCII加解密的扩展。
-下面展示了关于扩展的部分核心代码：
-for (int i = 0; i < plainText.length(); i++) {
+其中运用的中心思想是将明文密文中的ASCII编码字符串划分为单个的ASCII编码字符，再将其转化为对应的8bits的二进制，再作为输入进行加解密，经过加解密之后，再将得到的8bits二进制转化为对应的ASCII字符串，即完成了对应的ASCII加解密的扩展。  
+下面展示了关于扩展的部分核心代码：  
+`<
+void EncryptWidget::encrypt()
+{
+    QString plainText = m_plainTextEdit->toPlainText();
+    QString key = m_keyEdit->text();
+
+    if (plainText.isEmpty() || key.isEmpty()) { // 检查输入是否为空
+        QMessageBox::information(this, "提示", "加密失败：请输入密文和密钥");
+        return;
+    }
+    if (key.length() != 10) { // 检查是否为10bit的密钥
+        QMessageBox::information(this, "提示", "加密失败：请输入10bit的密钥");
+        return;
+    }
+    // 检查输入是否为ASCII编码字符串或二进制字符串
+    bool isAscii = true;
+    bool isBinary = true;
+    for (int i = 0; i < plainText.length(); i++) {
+        if (plainText[i].unicode() > 255) {
+            isAscii = false;
+        }
+        if (plainText[i] != '0' && plainText[i] != '1') {
+            isBinary = false;
+        }
+    }
+    for (int i = 0; i < key.length(); i++) {
+        if (key[i] != '0' && key[i] != '1' && key.length() != 10) {
+            QMessageBox::information(this, "提示", "加密失败：请输入10bit的二进制密钥");
+            return;
+        }
+    }
+
+    if (!isAscii && !isBinary) {
+        QMessageBox::information(this, "提示", "加密失败：明文需要是二进制或能转化为ASCII的字符串");
+        return;
+    }
+
+    QString encryptedText;
+    if (isBinary && plainText.length() == 8) {
+        QString encryptedBinaryText = m_sdes.encrypt(plainText, key);
+        encryptedText = encryptedBinaryText;
+    }
+    else if(isBinary && plainText.length() != 8){
+        QMessageBox::information(this, "提示", "加密失败：明文需要是8bit二进制数或能转化为ASCII的字符串");
+        return;
+    }
+    else {
+
+        for (int i = 0; i < plainText.length(); i++) {
             // 将ASCII编码字符串转换为二进制字符串进行加密
             QString binaryChar = QString("%1").arg(plainText[i].unicode(), 8, 2, QChar('0'));
             QString encryptedBinaryText = m_sdes.encrypt(binaryChar, key);
@@ -120,26 +170,30 @@ for (int i = 0; i < plainText.length(); i++) {
             QChar asciiChar(encryptedBinaryText.toInt(nullptr, 2));
             encryptedText += asciiChar;
         }
+    }
 
+    m_cipherLabel->setText(encryptedText);
+}
+>`
 
 
 ## 第4关：暴力破解
 ### 4.1单线程破解
-#### 4.1.1单线程破解思路
-首先，需要了解S-DES算法的工作原理和步骤。S-DES算法涉及到初始置换、加密轮函数、密钥生成和最终置换等步骤，因此破解对应的S-DES算法需要使用相同算法流程和转换单元(P-Box、S-Box等)，其次确定密钥空间：S-DES算法使用10位密钥，因此密钥空间为2^10 = 1024个可能的密钥。
-然后，将密钥从0至1023依次转换为8bits二进制带入进行破解，判断已知明文经由该密钥加密后的密文是否等同于已知的明密文对中的密文，如果等同，则求得了该明密文对中的密钥。
-#### 4.1.2单线程破解的实现
-已知明密文对：（明文：10101010，密文：00101111）
+#### 4.1.1单线程破解思路  
+首先，需要了解S-DES算法的工作原理和步骤。S-DES算法涉及到初始置换、加密轮函数、密钥生成和最终置换等步骤，因此破解对应的S-DES算法需要使用相同算法流程和转换单元(P-Box、S-Box等)，其次确定密钥空间：S-DES算法使用10位密钥，因此密钥空间为2^10 = 1024个可能的密钥。  
+然后，将密钥从0至1023依次转换为8bits二进制带入进行破解，判断已知明文经由该密钥加密后的密文是否等同于已知的明密文对中的密文，如果等同，则求得了该明密文对中的密钥。  
+#### 4.1.2单线程破解的实现  
+已知明密文对：（明文：10101010，密文：00101111）  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/4e53a48e-106c-498b-af05-0365c5b9a0df)
 
-可以找到该明密文对的四个密钥：1000011011 1011000010 1100011011 1111000010
-**相对应的破解时间为0.015572秒**
-通过下图的加密与解密均可证明根据明密文对找到的密钥正确：
+可以找到该明密文对的四个密钥：1000011011 1011000010 1100011011 1111000010  
+**相对应的破解时间为0.015572秒**  
+通过下图的加密与解密均可证明根据明密文对找到的密钥正确：    
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/919be8e3-d071-4a06-9741-9eed97575b55)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/fbbb7050-30e3-4e47-93e8-d8a56820b0dd)
 
-#### 4.1.3单线程破解部分核心代码
-void CrackWidget::crack()
+#### 4.1.3单线程破解部分核心代码  
+`<void CrackWidget::crack()
 {
     QStringList plainTextList = m_plainTextEdit->toPlainText().split("\n");
     QStringList cipherTextList = m_cipherTextEdit->toPlainText().split("\n");
@@ -234,14 +288,14 @@ void CrackWidget::crack()
     // 计算破解时长并显示
     m_timeLabel->setText(QString("破解时长：%1 秒").arg(QString::number(elapsedTimeSec, 'f', 6)));
 }
-
-### 4.2多线程破解
-#### 4.2.1多线程破解思路
-我们创建多个CrackWorker对象并将它们移动到单独的线程中。每个CrackWorker对象负责搜索可能的密钥的一个子集。当一个CrackWorker对象找到正确的密钥时，它会发出一个keyFound信号，该信号连接到CrackWidget的onKeyFound()槽。onKeyFound()槽停止所有线程并在m_keyEdit小部件中设置密钥。
-#### 4.2.2多线程破解的实现
-由于多线程破解的主要思想也是多个线程进行遍历，但暴力破解应尽可能找到所有能破解该明密文对的密钥，因此其所消耗的时间与单线程破解相差不大，且所涉及的运行环境更为严苛，其时间复杂度与单线程破解相近，在这里未做前端的展现。相关代码可参考如下。
+>`
+### 4.2多线程破解  
+#### 4.2.1多线程破解思路  
+我们创建多个CrackWorker对象并将它们移动到单独的线程中。每个CrackWorker对象负责搜索可能的密钥的一个子集。当一个CrackWorker对象找到正确的密钥时，它会发出一个keyFound信号，该信号连接到CrackWidget的onKeyFound()槽。onKeyFound()槽停止所有线程并在m_keyEdit小部件中设置密钥。  
+#### 4.2.2多线程破解的实现  
+由于多线程破解的主要思想也是多个线程进行遍历，但暴力破解应尽可能找到所有能破解该明密文对的密钥，因此其所消耗的时间与单线程破解相差不大，且所涉及的运行环境更为严苛，其时间复杂度与单线程破解相近，在这里未做前端的展现。相关代码可参考如下。  
 #### 4.2.3多线程破解部分核心代码
-void CrackWidget::crack()
+`<void CrackWidget::crack()
 {
     QStringList plainTextList = m_plainTextEdit->toPlainText().split("\n");
     QStringList cipherTextList = m_cipherTextEdit->toPlainText().split("\n");
@@ -301,23 +355,23 @@ void CrackWidget::crack()
     QTime endTime = QTime::currentTime(); // 记录结束时间
     int elapsedTime = startTime.msecsTo(endTime); // 计算破解时长
     QMessageBox::information(this, "提示", QString("破解完成，用时 %1 毫秒").arg(elapsedTime));
-}
+}>`
 ## 第5关：封闭测试
-对于一个随机选择的明密文对，如果加密算法是单向的（即不可逆的），那么很可能存在多个密钥可以加密出相同的密文。这是因为单向加密算法通常是将明文映射到一个较小的密文空间中，而密钥则是用于控制这个映射的参数。因此，不同的密钥可能会将相同的明文映射到相同的密文上。
-对于一个给定的明文分组 P_n，如果加密算法是可逆的，那么不同的密钥 K_i 和 K_j 可能会加密出相同的密文 C_n。这是因为可逆加密算法是一种双向映射，它可以将明文空间和密文空间一一对应。因此，如果两个不同的密钥 K_i 和 K_j 都能将明文分组 P_n 加密为相同的密文 C_n，那么这两个密钥就是等效的，它们可以互相替换使用。
-需要注意的是，如果加密算法是强加密算法，那么即使给定相同的明文分组，不同的密钥也不太可能加密出相同的密文。这是因为强加密算法通常使用的是随机数或者伪随机数生成器来生成密钥和初始化向量，这样可以保证每次加密的结果都是不同。
-具体验证实例：
-已知明密文对（明文：+，密文：2）
+对于一个随机选择的明密文对，如果加密算法是单向的（即不可逆的），那么很可能存在多个密钥可以加密出相同的密文。这是因为单向加密算法通常是将明文映射到一个较小的密文空间中，而密钥则是用于控制这个映射的参数。因此，不同的密钥可能会将相同的明文映射到相同的密文上。  
+对于一个给定的明文分组 P_n，如果加密算法是可逆的，那么不同的密钥 K_i 和 K_j 可能会加密出相同的密文 C_n。这是因为可逆加密算法是一种双向映射，它可以将明文空间和密文空间一一对应。因此，如果两个不同的密钥 K_i 和 K_j 都能将明文分组 P_n 加密为相同的密文 C_n，那么这两个密钥就是等效的，它们可以互相替换使用。  
+需要注意的是，如果加密算法是强加密算法，那么即使给定相同的明文分组，不同的密钥也不太可能加密出相同的密文。这是因为强加密算法通常使用的是随机数或者伪随机数生成器来生成密钥和初始化向量，这样可以保证每次加密的结果都是不同。  
+具体验证实例：  
+已知明密文对（明文：+，密文：2）  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/656639a1-065f-437d-9be0-c3004e085264)
 
-Foun key: 0001000000 0010011000 0101000000 0110011000 1011111111 1111111111
-验证：
+Foun key: 0001000000 0010011000 0101000000 0110011000 1011111111 1111111111  
+验证：  
 ![Uploading image.png…]()
 ![Uploading image.png…]()
 
 ## 核心代码附件：
 ### sdes.cpp
-//检测字符若为二进制，则将其转化为int类整数型
+`<//检测字符若为二进制，则将其转化为int类整数型
 int SDES::binToDec(const QString &binStr)
 {
     return binStr.toInt(nullptr, 2);
@@ -559,9 +613,9 @@ QString SDES::decrypt(const QString &ciphertext, const QString &key)
         return "";
     }
 }
-
+>`
 ### mainwidget.cpp
-// 各页面间跳转
+`<// 各页面间跳转
 // 连接按钮的 clicked 信号到 QStackedWidget 的 setCurrentIndex 槽
     connect(encryptButton, &QPushButton::clicked, m_stackedWidget, [this]() {
         m_stackedWidget->setCurrentIndex(0);
@@ -572,9 +626,9 @@ QString SDES::decrypt(const QString &ciphertext, const QString &key)
     connect(crackButton, &QPushButton::clicked, m_stackedWidget, [this]() {
         m_stackedWidget->setCurrentIndex(2);
     });
-
+>`
 ### encryptionwidget.cpp
-void EncryptWidget::encrypt()
+`<void EncryptWidget::encrypt()
 {
     QString plainText = m_plainTextEdit->toPlainText();
     QString key = m_keyEdit->text();
@@ -635,9 +689,9 @@ void EncryptWidget::encrypt()
     m_cipherLabel->setText(encryptedText);
     m_cipherLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
 }
-
+>`
 ### decryptionwidget.cpp
-void DecryptWidget::decrypt()
+`<void DecryptWidget::decrypt()
 {
     QString cipherText = m_cipherTextEdit->toPlainText();
     QString key = m_keyEdit->text();
@@ -696,9 +750,9 @@ void DecryptWidget::decrypt()
 
     m_decryptedLabel->setText(decryptedText);
     m_decryptedLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-}
+}>`
 ### crackwidget.cpp
-//单线程暴力破解关键代码
+`<//单线程暴力破解关键代码
 void CrackWidget::crack()
 {
     // 获取开始时间戳
@@ -816,9 +870,9 @@ void CrackWidget::crack()
     QMessageBox::information(this, "提示", QString("破解完成，用时 %1 毫秒").arg(elapsedTime));
 }
 
-
+>`
 ### crackworker.cpp
-//多线程暴力破解关键代码
+`<//多线程暴力破解关键代码
 void CrackWorker::process() {
     for (int i = 0; i < 1024; i++) {
         QString key = QString("%1%2%3%4%5%6%7%8")
@@ -849,6 +903,6 @@ void CrackWorker::process() {
             emit keyFound(key);
             return;
         }
-    }
+    }>`
 }
 
