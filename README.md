@@ -12,9 +12,9 @@ k_{i}=P_{8}(Shift^{i}(P_{10}(K))), (i=1,2)
 ### 4 转换装置设定：
 #### 4.1 密钥扩展置
 P_{10}=(3,5,2,7,4,10,1,9,8,6)  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bfc2bc3-f101-4bc3-bd06-2e947bf90944)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bfc2bc3-f101-4bc3-bd06-2e947bf90944)  
 P_{8}=(6,3,7,4,8,5,10,9)  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2cc65de4-ca6b-4a49-b2c3-cbd5dab9d887)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/ed5c2cae-f642-4b4c-bea6-116213cfd593)  
 Left_Shift^1=(2,3,4,5,1)  
 Left_Shift^2=(3,4,5,1,2)
 #### 4.2 初始置换盒
@@ -44,7 +44,7 @@ SPBox=(2,4,3,1)
 #### 1.1.2解密界面  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/0566655e-a342-4cb6-bdf7-fd7ed0363610)
 #### 1.1.3暴力破解界面  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7ff65142-3d85-4a15-ab11-a90b92bf448c)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/74abf707-43e1-4232-b451-fc2684325434)
 #### 1.1.4界面间跳转  
 三个界面可以通过点击界面下方的三个按钮进行跳转，点击“锁”可以跳转到加密界面，点击“开锁”按钮可以跳转到解密界面，点击“暴力破解”即可转为“暴力破解”界面。
 
