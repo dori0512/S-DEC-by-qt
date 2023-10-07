@@ -1,4 +1,5 @@
 # S-DEC-by-qt
+## 相关用户手册、接口文档详见附件
 ## 实验原理和标准设定：
 1 分组长度：8-bit
 2 密钥长度：10-bit
@@ -117,7 +118,7 @@ ASCII加密：（密文：svc 密钥：1111111111）
 
 其中运用的中心思想是将明文密文中的ASCII编码字符串划分为单个的ASCII编码字符，再将其转化为对应的8bits的二进制，再作为输入进行加解密，经过加解密之后，再将得到的8bits二进制转化为对应的ASCII字符串，即完成了对应的ASCII加解密的扩展。  
 下面展示了关于扩展的部分核心代码：  
-` ``   
+```  
 void EncryptWidget::encrypt()
 {
     QString plainText = m_plainTextEdit->toPlainText();
@@ -178,8 +179,7 @@ void EncryptWidget::encrypt()
 
     m_cipherLabel->setText(encryptedText);
 }  
-` `` 
-
+``` 
 
 ## 第4关：暴力破解
 ### 4.1单线程破解
@@ -196,7 +196,7 @@ void EncryptWidget::encrypt()
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/919be8e3-d071-4a06-9741-9eed97575b55)
 
 #### 4.1.3单线程破解部分核心代码  
-` ``   
+```   
 void CrackWidget::crack()
 {
     QStringList plainTextList = m_plainTextEdit->toPlainText().split("\n");
@@ -292,14 +292,14 @@ void CrackWidget::crack()
     // 计算破解时长并显示
     m_timeLabel->setText(QString("破解时长：%1 秒").arg(QString::number(elapsedTimeSec, 'f', 6)));
 }  
-` `` 
+``` 
 ### 4.2多线程破解  
 #### 4.2.1多线程破解思路  
 我们创建多个CrackWorker对象并将它们移动到单独的线程中。每个CrackWorker对象负责搜索可能的密钥的一个子集。当一个CrackWorker对象找到正确的密钥时，它会发出一个keyFound信号，该信号连接到CrackWidget的onKeyFound()槽。onKeyFound()槽停止所有线程并在m_keyEdit小部件中设置密钥。  
 #### 4.2.2多线程破解的实现  
 由于多线程破解的主要思想也是多个线程进行遍历，但暴力破解应尽可能找到所有能破解该明密文对的密钥，因此其所消耗的时间与单线程破解相差不大，且所涉及的运行环境更为严苛，其时间复杂度与单线程破解相近，在这里未做前端的展现。相关代码可参考如下。  
 #### 4.2.3多线程破解部分核心代码
-` ``   
+```   
 void CrackWidget::crack()
 {
     QStringList plainTextList = m_plainTextEdit->toPlainText().split("\n");
@@ -361,25 +361,22 @@ void CrackWidget::crack()
     int elapsedTime = startTime.msecsTo(endTime); // 计算破解时长
     QMessageBox::information(this, "提示", QString("破解完成，用时 %1 毫秒").arg(elapsedTime));
 }  
-` `` 
+``` 
 ## 第5关：封闭测试
 对于一个随机选择的明密文对，如果加密算法是单向的（即不可逆的），那么很可能存在多个密钥可以加密出相同的密文。这是因为单向加密算法通常是将明文映射到一个较小的密文空间中，而密钥则是用于控制这个映射的参数。因此，不同的密钥可能会将相同的明文映射到相同的密文上。  
 对于一个给定的明文分组 P_n，如果加密算法是可逆的，那么不同的密钥 K_i 和 K_j 可能会加密出相同的密文 C_n。这是因为可逆加密算法是一种双向映射，它可以将明文空间和密文空间一一对应。因此，如果两个不同的密钥 K_i 和 K_j 都能将明文分组 P_n 加密为相同的密文 C_n，那么这两个密钥就是等效的，它们可以互相替换使用。  
 需要注意的是，如果加密算法是强加密算法，那么即使给定相同的明文分组，不同的密钥也不太可能加密出相同的密文。这是因为强加密算法通常使用的是随机数或者伪随机数生成器来生成密钥和初始化向量，这样可以保证每次加密的结果都是不同。  
 具体验证实例：  
 已知明密文对（明文：+，密文：2）  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/656639a1-065f-437d-9be0-c3004e085264)
-
-Foun key: 0001000000 0010011000 0101000000 0110011000 1011111111 1111111111  
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7b722330-b9e3-432d-b85b-423ed94d24d4)  
+**Foun key: 0001000000 0010011000 0101000000 0110011000 1011111111 1111111111  **
 验证：  
-![Uploading image.png…]()
-![Uploading image.png…]()
-
-## 相关用户手册、接口文档详见附件
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/66308e24-6616-46f1-998e-973f4d90acbb)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/1125fc3b-b9b8-4387-949e-d4b6d853232e)
 
 ## 核心代码附件：
 ### sdes.cpp
-` ``   
+```   
 //检测字符若为二进制，则将其转化为int类整数型
 int SDES::binToDec(const QString &binStr)
 {
@@ -622,9 +619,9 @@ QString SDES::decrypt(const QString &ciphertext, const QString &key)
         return "";
     }
 }  
-` `` 
+``` 
 ### mainwidget.cpp
-` `` 
+``` 
 // 各页面间跳转
 // 连接按钮的 clicked 信号到 QStackedWidget 的 setCurrentIndex 槽
     connect(encryptButton, &QPushButton::clicked, m_stackedWidget, [this]() {
@@ -636,9 +633,9 @@ QString SDES::decrypt(const QString &ciphertext, const QString &key)
     connect(crackButton, &QPushButton::clicked, m_stackedWidget, [this]() {
         m_stackedWidget->setCurrentIndex(2);
     });  
-` `` 
+``` 
 ### encryptionwidget.cpp
-` ``   
+```   
 void EncryptWidget::encrypt()
 {
     QString plainText = m_plainTextEdit->toPlainText();
@@ -700,9 +697,9 @@ void EncryptWidget::encrypt()
     m_cipherLabel->setText(encryptedText);
     m_cipherLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
 }  
-` ``   
+```   
 ### decryptionwidget.cpp
-` ``  
+```  
 void DecryptWidget::decrypt()
 {
     QString cipherText = m_cipherTextEdit->toPlainText();
@@ -763,9 +760,9 @@ void DecryptWidget::decrypt()
     m_decryptedLabel->setText(decryptedText);
     m_decryptedLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
 }  
-` ``   
+```   
 ### crackwidget.cpp
-` ``   
+```   
 //单线程暴力破解关键代码
 void CrackWidget::crack()
 {
@@ -884,9 +881,9 @@ void CrackWidget::crack()
     QMessageBox::information(this, "提示", QString("破解完成，用时 %1 毫秒").arg(elapsedTime));
 }
   
-` `` 
+``` 
 ### crackworker.cpp
-` ``   
+```   
 //多线程暴力破解关键代码
 void CrackWorker::process() {
     for (int i = 0; i < 1024; i++) {
@@ -920,4 +917,4 @@ void CrackWorker::process() {
         }
     }
 }  
-` `` 
+``` 
