@@ -14,7 +14,7 @@ k_{i}=P_{8}(Shift^{i}(P_{10}(K))), (i=1,2)
 P_{10}=(3,5,2,7,4,10,1,9,8,6)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bfc2bc3-f101-4bc3-bd06-2e947bf90944)
 P_{8}=(6,3,7,4,8,5,10,9)  
-![Uploading image.png…]()
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2cc65de4-ca6b-4a49-b2c3-cbd5dab9d887)
 Left_Shift^1=(2,3,4,5,1)  
 Left_Shift^2=(3,4,5,1,2)
 #### 4.2 初始置换盒
@@ -44,7 +44,7 @@ SPBox=(2,4,3,1)
 #### 1.1.2解密界面  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/0566655e-a342-4cb6-bdf7-fd7ed0363610)
 #### 1.1.3暴力破解界面  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/25a66b2f-6e18-48d8-b267-d81351168d12)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7ff65142-3d85-4a15-ab11-a90b92bf448c)
 #### 1.1.4界面间跳转  
 三个界面可以通过点击界面下方的三个按钮进行跳转，点击“锁”可以跳转到加密界面，点击“开锁”按钮可以跳转到解密界面，点击“暴力破解”即可转为“暴力破解”界面。
 
@@ -53,7 +53,7 @@ SPBox=(2,4,3,1)
 加密、解密、暴力破解都需要输入对应的明文/密文/密钥才能运行，若提交为空，则会弹出相应错误提示。  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2d73571c-f252-445a-b6ee-532f05536af2)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b4353624-767f-4057-a619-10d9c43b8fbe)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/5b135685-b153-4b63-8ae1-1c7a53b20da4)
+![Uploading image.png…]()
 
 密钥限定为10bits，不满足条件，则会弹出警告  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2582c3bf-ffec-4113-8ad8-f290684c1796)
