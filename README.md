@@ -4,28 +4,28 @@
 2 密钥长度：10-bit
 3 算法描述：
 3.1 加密算法：  
-C=IP^{-1}(f_{k_{2}}(SW(f_{k_{1}}(IP(P)))))
+C=IP^{-1}(f_{k_{2}}(SW(f_{k_{1}}(IP(P)))))  
 3.2 解密算法：  
-P=IP^{-1}(f_{k_{1}}(SW(f_{k_{2}}(IP(C)))))
+P=IP^{-1}(f_{k_{1}}(SW(f_{k_{2}}(IP(C)))))  
 3.3 密钥扩展：  
-k_{i}=P_{8}(Shift^{i}(P_{10}(K))), (i=1,2)
-4 转换装置设定：
-4.1 密钥扩展置
+k_{i}=P_{8}(Shift^{i}(P_{10}(K))), (i=1,2)  
+4 转换装置设定：  
+4.1 密钥扩展置  
 P_{10}=(3,5,2,7,4,10,1,9,8,6)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/7bfc2bc3-f101-4bc3-bd06-2e947bf90944)  
 P_{8}=(6,3,7,4,8,5,10,9)  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/ed5c2cae-f642-4b4c-bea6-116213cfd593)  
 Left_Shift^1=(2,3,4,5,1)  
-Left_Shift^2=(3,4,5,1,2)
-4.2 初始置换盒
+Left_Shift^2=(3,4,5,1,2)  
+4.2 初始置换盒  
 IP=(2,6,3,1,4,8,5,7)  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/914b8f2b-ece8-4c6b-9bfa-e21c0c20389a)
-最终置换盒
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/914b8f2b-ece8-4c6b-9bfa-e21c0c20389a)  
+最终置换盒  
 IP^{-1}=(4,1,3,5,7,2,8,6)  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/492fc769-e1d6-4e1f-a175-8caff69473ec)
-轮函数F
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/492fc769-e1d6-4e1f-a175-8caff69473ec)  
+轮函数F  
 EPBox=(4,1,2,3,2,3,4,1)  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b2a9ffae-2619-411b-882a-6e642a8f5e96)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b2a9ffae-2619-411b-882a-6e642a8f5e96)  
 
 SBox_{1}=[(1,0,3,2);(3,2,1,0);(0,2,1,3);(3,1,0,2)]  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/dea7d561-a363-48b2-b706-17846ba9dbf9)
@@ -52,12 +52,12 @@ SPBox=(2,4,3,1)
 #### 1.2.1不规范输入  
 加密、解密、暴力破解都需要输入对应的明文/密文/密钥才能运行，若提交为空，则会弹出相应错误提示。  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2d73571c-f252-445a-b6ee-532f05536af2)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/1d20ed43-01ee-4ebe-b3b9-bf3e966e80e9)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/9ae3ad35-44fa-4c28-bec8-758fa90d4928)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/d7bd7937-a834-471b-bd65-74cb2d0d1b5b)
 
 密钥限定为10bits，不满足条件，则会弹出警告  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/f64c9884-dabf-4a01-bfda-675262ad3637)
-![Uploading image.png…]()
+
 
 明密文必须是8bits的二进制数或者能转化为ASCII的字符串，否则会弹出警告  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/86e78b95-3228-4e09-821e-b1928aec570c)
