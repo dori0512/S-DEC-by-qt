@@ -117,7 +117,7 @@ ASCII加密：（密文：svc 密钥：1111111111）
 
 其中运用的中心思想是将明文密文中的ASCII编码字符串划分为单个的ASCII编码字符，再将其转化为对应的8bits的二进制，再作为输入进行加解密，经过加解密之后，再将得到的8bits二进制转化为对应的ASCII字符串，即完成了对应的ASCII加解密的扩展。  
 下面展示了关于扩展的部分核心代码：  
-` `` 
+` ``   
 void EncryptWidget::encrypt()
 {
     QString plainText = m_plainTextEdit->toPlainText();
@@ -177,7 +177,7 @@ void EncryptWidget::encrypt()
     }
 
     m_cipherLabel->setText(encryptedText);
-}
+}  
 ` `` 
 
 
@@ -196,7 +196,7 @@ void EncryptWidget::encrypt()
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/919be8e3-d071-4a06-9741-9eed97575b55)
 
 #### 4.1.3单线程破解部分核心代码  
-` `` 
+` ``   
 void CrackWidget::crack()
 {
     QStringList plainTextList = m_plainTextEdit->toPlainText().split("\n");
@@ -291,7 +291,7 @@ void CrackWidget::crack()
 
     // 计算破解时长并显示
     m_timeLabel->setText(QString("破解时长：%1 秒").arg(QString::number(elapsedTimeSec, 'f', 6)));
-}
+}  
 ` `` 
 ### 4.2多线程破解  
 #### 4.2.1多线程破解思路  
@@ -299,7 +299,7 @@ void CrackWidget::crack()
 #### 4.2.2多线程破解的实现  
 由于多线程破解的主要思想也是多个线程进行遍历，但暴力破解应尽可能找到所有能破解该明密文对的密钥，因此其所消耗的时间与单线程破解相差不大，且所涉及的运行环境更为严苛，其时间复杂度与单线程破解相近，在这里未做前端的展现。相关代码可参考如下。  
 #### 4.2.3多线程破解部分核心代码
-` `` 
+` ``   
 void CrackWidget::crack()
 {
     QStringList plainTextList = m_plainTextEdit->toPlainText().split("\n");
@@ -360,7 +360,7 @@ void CrackWidget::crack()
     QTime endTime = QTime::currentTime(); // 记录结束时间
     int elapsedTime = startTime.msecsTo(endTime); // 计算破解时长
     QMessageBox::information(this, "提示", QString("破解完成，用时 %1 毫秒").arg(elapsedTime));
-}
+}  
 ` `` 
 ## 第5关：封闭测试
 对于一个随机选择的明密文对，如果加密算法是单向的（即不可逆的），那么很可能存在多个密钥可以加密出相同的密文。这是因为单向加密算法通常是将明文映射到一个较小的密文空间中，而密钥则是用于控制这个映射的参数。因此，不同的密钥可能会将相同的明文映射到相同的密文上。  
@@ -379,7 +379,7 @@ Foun key: 0001000000 0010011000 0101000000 0110011000 1011111111 1111111111
 
 ## 核心代码附件：
 ### sdes.cpp
-` `` 
+` ``   
 //检测字符若为二进制，则将其转化为int类整数型
 int SDES::binToDec(const QString &binStr)
 {
@@ -621,7 +621,7 @@ QString SDES::decrypt(const QString &ciphertext, const QString &key)
         qDebug()<<"Error:ip.length() < 8 22";
         return "";
     }
-}
+}  
 ` `` 
 ### mainwidget.cpp
 ` `` 
@@ -635,10 +635,10 @@ QString SDES::decrypt(const QString &ciphertext, const QString &key)
     });
     connect(crackButton, &QPushButton::clicked, m_stackedWidget, [this]() {
         m_stackedWidget->setCurrentIndex(2);
-    });
+    });  
 ` `` 
 ### encryptionwidget.cpp
-` `` 
+` ``   
 void EncryptWidget::encrypt()
 {
     QString plainText = m_plainTextEdit->toPlainText();
@@ -699,10 +699,10 @@ void EncryptWidget::encrypt()
 
     m_cipherLabel->setText(encryptedText);
     m_cipherLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-}
-` `` 
+}  
+` ``   
 ### decryptionwidget.cpp
-` `` 
+` ``  
 void DecryptWidget::decrypt()
 {
     QString cipherText = m_cipherTextEdit->toPlainText();
@@ -762,10 +762,10 @@ void DecryptWidget::decrypt()
 
     m_decryptedLabel->setText(decryptedText);
     m_decryptedLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-}
-` `` 
+}  
+` ``   
 ### crackwidget.cpp
-` `` 
+` ``   
 //单线程暴力破解关键代码
 void CrackWidget::crack()
 {
@@ -883,10 +883,10 @@ void CrackWidget::crack()
     int elapsedTime = startTime.msecsTo(endTime); // 计算破解时长
     QMessageBox::information(this, "提示", QString("破解完成，用时 %1 毫秒").arg(elapsedTime));
 }
-
+  
 ` `` 
 ### crackworker.cpp
-` `` 
+` ``   
 //多线程暴力破解关键代码
 void CrackWorker::process() {
     for (int i = 0; i < 1024; i++) {
@@ -919,5 +919,5 @@ void CrackWorker::process() {
             return;
         }
     }
-}
+}  
 ` `` 
