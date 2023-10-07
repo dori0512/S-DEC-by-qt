@@ -52,12 +52,12 @@ SPBox=(2,4,3,1)
 #### 1.2.1不规范输入  
 加密、解密、暴力破解都需要输入对应的明文/密文/密钥才能运行，若提交为空，则会弹出相应错误提示。  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2d73571c-f252-445a-b6ee-532f05536af2)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/b4353624-767f-4057-a619-10d9c43b8fbe)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/1d20ed43-01ee-4ebe-b3b9-bf3e966e80e9)
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/d7bd7937-a834-471b-bd65-74cb2d0d1b5b)
 
 密钥限定为10bits，不满足条件，则会弹出警告  
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/2aca304c-0f1f-4cbe-861f-cecef5981e8e)
-![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/0514c0d1-1af2-4766-b2c3-4a0829d5068a)
+![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/f64c9884-dabf-4a01-bfda-675262ad3637)
+![Uploading image.png…]()
 
 明密文必须是8bits的二进制数或者能转化为ASCII的字符串，否则会弹出警告  
 ![image](https://github.com/dori0512/S-DEC-by-qt/assets/130364519/86e78b95-3228-4e09-821e-b1928aec570c)
